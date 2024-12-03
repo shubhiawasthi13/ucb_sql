@@ -1,18 +1,27 @@
+// client side validation
 function validateForm(){
-    const name = doucument.getElementById("username").value;
-    const email = doucument.getElementById("email").value;
-    const city = doucument.getElementById("city").value;
-    const mobile = doucument.getElementById("mobile").value;
+    const name = document.getElementById("name").value;
+    const address = document.getElementById("address").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const subject = document.getElementById("subject").value;
+    const agree = document.getElementById("agree").checked;
+    
 
-    const nameError = doucument.getElementById("name-error");
-    const emailError = doucument.getElementById("email-error"); 
-    const cityError = doucument.getElementById("city-error"); 
-    const mobileError = doucument.getElementById("mobile-error"); 
+
+    const nameError = document.getElementById("name-error");
+    const emailError = document.getElementById("email-error"); 
+    const addressError = document.getElementById("address-error"); 
+    const passwordError = document.getElementById("password-error"); 
+    const subjectError = document.getElementById("subject-error"); 
+    const agreeError = document.getElementById("agree-error"); 
 
     nameError.textContent ="";
     emailError.textContent ="";
-    cityError.textContent ="";
-    mobileError.textContent ="";
+    addressError.textContent ="";
+    passwordError.textContent ="";
+    subjectError.textContent ="";
+    agreeError.textContent ="";
 
     let isValid = true;
     if(name === "" || /\d/.test(name)){
@@ -20,15 +29,23 @@ function validateForm(){
         isValid = false;
     }
     if(email === "" || !email.includes("@")){
-        nameError.textContent = "Please enter a valid email";
+        emailError.textContent = "Please enter a valid email";
         isValid = false;
     }
-    if(city === ""){
-        nameError.textContent = "Please enter your city name";
+    if(address === ""){
+        addressError.textContent = "Please enter your address";
         isValid = false;
     }
-    if(mobile === "" || mobile.length < 10){
-        nameError.textContent = "Please enter your number properly";
+    if(password === "" || password.length < 8){
+        passwordError.textContent = "Please enter atleast 8 characters";
+        isValid = false;
+    }
+    if(subject === ""){
+        subjectError.textContent = "Please select your course";
+        isValid = false;
+    }
+    if(!agree){
+        agreeError.textContent = "Please agree the above info";
         isValid = false;
     }
     return isValid;
